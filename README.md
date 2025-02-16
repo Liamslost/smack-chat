@@ -138,6 +138,12 @@ GET /rooms
       "roomName": "General Chat",
       "commentCount": 123,
       "latestCommentDate": "DD-MM-YY"
+    },
+    {
+      "roomId": "2",
+      "roomName": "General Chat 2",
+      "commentCount": 321,
+      "latestCommentDate": "DD-MM-YY"
     }
   ]
 }
@@ -168,12 +174,22 @@ GET /rooms
 POST /login
 ```
 
+### **Request Body Format**
+
+```json
+{
+  "username": "Joe Blogs",
+  "password": "password123"
+}
+```
+
 ### **Success Response**
 
 **Code:** `200 OK`
 
 ```json
 {
+  "success": true,
   "message": "Successfully logged in.",
   "data": {
     "username": "Joe Blogs"
@@ -187,6 +203,7 @@ POST /login
 
 ```json
 {
+  "success": false,
   "message": "Missing login information",
   "data": {}
 }
@@ -196,6 +213,7 @@ POST /login
 
 ```json
 {
+  "success": false,
   "message": "Invalid username or password",
   "data": {}
 }
@@ -241,6 +259,14 @@ GET /rooms/123
         "author": "James Bond",
         "content": "This is a message",
         "isEdited": true
+      },
+      {
+        "commentId": "124",
+        "userId": "81",
+        "timestamp": 1739157350,
+        "author": "Joe Blogs",
+        "content": "This is another message",
+        "isEdited": false
       }
     ]
   }
